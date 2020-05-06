@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+  db:
+    image: mariadb
+    command: --transaction-isolation=READ-COMMITTED --binlog-format=ROW
+    restart: always
+    volumes:
+      - ./mysql_data:/var/lib/mysql
+    environment:
+# use .env file do specify values for these vars
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+# If you don't want to use mysql outside a container - don't expose ports
+#    ports:
+#      - 3306:3306
+  tracks:
+    build: app
+    environment:
+      - RAILS_ENV:'development'
+# uncomment volumes if you want to use mariadb instead of sqlite
+#    volumes:
+#      - app/database.yml:/app/config/database.yml
+    ports:
+      - 3000:3000
