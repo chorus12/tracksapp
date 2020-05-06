@@ -14,7 +14,8 @@ services:
 #    ports:
 #      - 3306:3306
   tracks:
-    build: app
+    image: bodbe/tracks:2.4.1
+#    build: app
     environment:
       - RAILS_ENV:'development'
 # uncomment volumes if you want to use mariadb instead of sqlite
