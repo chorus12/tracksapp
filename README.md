@@ -57,7 +57,7 @@ Next you should bind-mount a site.yml to a container:
 
 2. For production use run application behind nginx reverse proxy. 
 
-3. You might also want to tweak parameters of puma applicaiton server in [puma.rb](app/puma.rb) and bind mount it like site.yml to a container.
+3. You might also want to tweak parameters of puma applicaiton server in [puma.rb](app/puma.rb) for number of workers, defauld port instead of 3000 and bind mount it like site.yml to a container.
 
 4. Troubleshooting cookies
 You may sometimes encounter that application does not display content - this may be caused by cookies - just clear them from the browser. 
