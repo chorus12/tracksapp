@@ -53,7 +53,8 @@ Next you should bind-mount a site.yml to a container:
 ```yaml
     volumes:
       - app/site.yml:/app/config/site.yml
-```
+```  
+**Regenerate secret token** in application interface.  
 
 2. For production use run application behind nginx reverse proxy. 
 
