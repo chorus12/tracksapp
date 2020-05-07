@@ -14,12 +14,12 @@ RUN gem install bundler && bundle install
 
 RUN mkdir -p /app/log
 
-ENV RAILS_ENV="development"
+ENV RAILS_ENV="production"
 
 RUN cp /app/config/site.yml.tmpl /app/config/site.yml
 COPY ./database-sqlite.yml /app/config/database.yml
 
-RUN bundle exec rake db:migrate RAILS_ENV=development && bundle exec rake assets:precompile
+RUN bundle exec rake db:migrate RAILS_ENV=production && bundle exec rake assets:precompile
 
 EXPOSE 3000
 

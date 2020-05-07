@@ -6,7 +6,7 @@ authentication_schemes:
 # You'll probably want to change this to the time zone of the computer where 
 # Tracks is running. Run rake time:zones:local have Rails suggest time zone 
 # names on your system
-time_zone: "UTC"
+time_zone: "GMT+3"
 
 
 # setting this to true will make the cookies only available over HTTPS
@@ -23,7 +23,8 @@ secure_cookies: false
 #
 #   rake secret
 #
-secret_token: "change-me"
+# change this for security reason
+secret_token: "6737e6x9tfpi7wpcj79s94hx2nz8kos9b4wn7fbwpehqxv8f6oxtxt2nc629ho2krw83pygsyqfexkwt"
 
 # Set to true when your application is running with https
 force_ssl: false
@@ -32,7 +33,7 @@ force_ssl: false
 # The best practice is to have a proxying web server such as Apache or Nginx
 # serve static assets (images, stylesheets, javascript) for you. Change
 # this to 'true' if you want Rails to be responsible for serving the static assets
-# serve_static_assets: false
+serve_static_assets: true
 
 # Uncomment if you want to dispatch todos that come from email based on the To: 
 # address rather than the From: address.
