@@ -2,11 +2,12 @@
 https://www.getontracks.org  
 Version: **2.4.1**
 
-## Run a simple install with sqlite
+## Run a simple installation with sqlite
 Just run `docker-compose run -p 3000:3000 tracks`  
-Tracks is available on http://localhost:3000
+Tracks is available on https://localhost:3000  
+**Pay attention to https - server is configured to serve on HTTPS**
 
-## Just in case you want to build the image locally  
+## In case you want to build the image locally  
 `docker-compose build`
 
 ## Setup to use mysql  
@@ -33,25 +34,32 @@ Stop the mysql container.
     volumes:
       - app/database.yml:/app/config/database.yml
 ```
-5. You are almost good to go - just need to migrate the database
+5. You are almost good to go - just need to create objects in database
 ```sh
 # run the docker-compose
 docker-compose up -d && docker-compose logs -f
 # get inside the tracks container
 docker exec -it tracksapp_tracks bash
 # inside the container give the command 
-bundle exec rake db:migrate RAILS_ENV=development
+bundle exec rake db:migrate RAILS_ENV=production
 ```
 
-6. One more thing - generate `secret_token:` for `site.yml`  
+## Additional configuration 
+
+1. For a better security you might want to regenerate `secret_token:` in `site.yml`  
 `/app/config/site.yml` has a key `secret_token` for verifying the integrity of signed cookies.  
-You can either generate with a command `rake secret` or with any other means.  
-Next you can mount a site.yml to a container:  
+You can either generate a value with a command `rake secret` or by any other means.  
+Next you should bind-mount a site.yml to a container:  
 ```yaml
     volumes:
       - app/site.yml:/app/config/site.yml
 ```
 
-7. For production use run application behind nginx reverse proxy. 
+2. For production use run application behind nginx reverse proxy. 
+
+3. You might also want to tweak parameters of puma applicaiton server in [puma.rb](app/puma.rb) and bind mount it like site.yml to a container.
+
+4. Troubleshooting cookies
+You may sometimes encounter that application does not display content - this may be caused by cookies - just clear them from the browser. 
 
 Enjoy being productive!
