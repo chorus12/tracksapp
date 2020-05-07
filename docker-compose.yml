@@ -14,10 +14,10 @@ services:
 #    ports:
 #      - 3306:3306
   tracks:
-    image: bodbe/tracks:2.4.1
-#    build: app
+#    image: bodbe/tracks:2.4.1
+    build: app
     environment:
-      - RAILS_ENV='production'
+      - RAILS_ENV=production
 # uncomment volumes if you want to use mariadb instead of sqlite
 #    volumes:
 #      - ./app/database.yml:/app/config/database.yml

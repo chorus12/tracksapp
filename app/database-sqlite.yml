@@ -1,11 +1,11 @@
-development:
+production:
   adapter: sqlite3
   database: db/tracks.sqlite3.db
   pool: 5
   timeout: 5000
 
 
-produciton:
+development:
   adapter: sqlite3
   database: db/tracks.sqlite3.db
   pool: 5
